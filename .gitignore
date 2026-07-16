@@ -1,0 +1,13 @@
+node_modules/
+.agents/
+.codex/
+.next/
+.wrangler/
+dist/
+.env*
+!.env.example
+work/
+outputs/
+legacy-prototype/
+assets/
+*.log
