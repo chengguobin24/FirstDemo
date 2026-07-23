@@ -51,10 +51,14 @@ export async function POST(request: Request) {
     phone: safeText(value(data, "phone"), 80),
     country: safeText(value(data, "country"), 120),
     product: safeText(value(data, "product"), 120),
+    installationDimensions: safeText(value(data, "installationDimensions"), 240),
+    roofType: safeText(value(data, "roofType"), 120),
+    operation: safeText(value(data, "operation"), 120),
     message: safeText(value(data, "message")),
   };
 
   if (!fields.name || !fields.company || !fields.email || !fields.country || !fields.product || !fields.message || value(data, "consent") !== "yes") return NextResponse.json({ message: "Please complete all required fields." }, { status: 400 });
+  if (value(data, "inquiryContext") === "pergola-detail" && (!fields.installationDimensions || !fields.roofType || !fields.operation)) return NextResponse.json({ message: "Please complete the pergola configuration fields." }, { status: 400 });
   if (!EMAIL_PATTERN.test(fields.email)) return NextResponse.json({ message: "Please enter a valid business email." }, { status: 400 });
 
   const ip = request.headers.get("CF-Connecting-IP");
