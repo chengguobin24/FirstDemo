@@ -117,8 +117,8 @@ export default async function AluminumSwingGatesPage({ searchParams }: SwingGate
   const selectedKey = imageKey && imageKey in heroImages ? imageKey as keyof typeof heroImages : "gate-04";
   const heroImage = heroImages[selectedKey];
   const selectedContent = heroContent[selectedKey];
-  const catalogPreviewUrl = process.env.NEXT_PUBLIC_SWING_GATE_CATALOG_PREVIEW_URL;
-  const catalogDownloadUrl = process.env.NEXT_PUBLIC_SWING_GATE_CATALOG_DOWNLOAD_URL;
+  const catalogPreviewUrl = process.env.NEXT_PUBLIC_SWING_GATE_CATALOG_PREVIEW_URL || "/catalogs/junsu-garden-gate-catalog.pdf";
+  const catalogDownloadUrl = process.env.NEXT_PUBLIC_SWING_GATE_CATALOG_DOWNLOAD_URL || "/catalogs/junsu-garden-gate-catalog.pdf";
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -156,8 +156,8 @@ export default async function AluminumSwingGatesPage({ searchParams }: SwingGate
             <p>Explore custom aluminum swing gate designs for pedestrian entrances, private courtyards and residential driveways. Manufactured from 6063-T5 aluminum in custom single- or double-leaf configurations, each gate can be specified with powder-coated or fluorocarbon-coated finishes, manual or motorized opening, smart locks and coordinated access-control systems.</p>
           </div>
           <div className={styles.catalogActions}>
-            {catalogPreviewUrl ? <a href={catalogPreviewUrl} target="_blank" rel="noopener noreferrer">Online preview <span aria-hidden="true">↗</span></a> : <span aria-disabled="true">Online preview <b>PDF</b></span>}
-            {catalogDownloadUrl ? <a className={styles.catalogDownload} href={catalogDownloadUrl}>Download PDF <span aria-hidden="true">↓</span></a> : <span className={styles.catalogDownload} aria-disabled="true">Download PDF <b>PDF</b></span>}
+            <a href={catalogPreviewUrl} target="_blank" rel="noopener noreferrer">Online preview <span aria-hidden="true">↗</span></a>
+            <a className={styles.catalogDownload} href={catalogDownloadUrl} download="JUNSU-Garden-Gate-Catalog.pdf">Download PDF <span aria-hidden="true">↓</span></a>
           </div>
         </header>
         <StyleCarousel />
@@ -186,7 +186,7 @@ export default async function AluminumSwingGatesPage({ searchParams }: SwingGate
       </section>
 
       <section className={styles.faqSection}>
-        <div className={`${styles.faqHeading} site-reveal site-reveal-text`}><p className={styles.eyebrow}>Before your inquiry</p><h2>Frequently asked questions.</h2><div className={styles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">↗</span></Link><a className={styles.whatsappButton} href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></div>
+        <div className={`${styles.faqHeading} site-reveal site-reveal-text`}><p className={styles.eyebrow}>Before your inquiry</p><h2>Frequently asked questions.</h2><div className={styles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">↗</span></Link><a className={styles.whatsappButton} href="https://wa.me/8613525568065" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></div>
         <div className={`${styles.faqList} site-reveal site-reveal-text`}>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />

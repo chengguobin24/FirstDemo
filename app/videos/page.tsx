@@ -1,9 +1,41 @@
 import type { Metadata } from "next";
-import { VideoCard } from "@/components/VideoCard";
-import { videoSlots } from "@/lib/site-data";
+import { VideoLibrary } from "@/components/VideoLibrary";
+import { listPublishedVideos } from "@/lib/video-db";
 
-export const metadata: Metadata = { title: "Factory & Installation Videos", description: "Factory, production and installation video library for JUNSU aluminum systems.", alternates: { canonical: "/videos" } };
+export const dynamic = "force-dynamic";
 
-export default function VideosPage() {
-  return <><section className="page-hero"><p className="kicker ink">Video library</p><h1>See how the systems<br /><em>are made and installed.</em></h1><p>Video files are loaded only when selected. This keeps the page responsive while still providing manufacturing and installation evidence.</p></section><section className="page-section"><div className="video-grid">{videoSlots.map((video) => <VideoCard key={video.slug} {...video} />)}</div></section></>;
+export const metadata: Metadata = {
+  title: "JUNSU Videos",
+  description: "Fence, gate, pavilion and installation videos for JUNSU aluminum systems.",
+  alternates: { canonical: "/videos" },
+  openGraph: {
+    title: "JUNSU Videos | Aluminum Fence, Gate & Pavilion Systems",
+    description: "Fence, gate, pavilion and installation videos for JUNSU aluminum systems.",
+    url: "/videos",
+    images: [
+      {
+        url: "/og.png",
+        alt: "JUNSU aluminum system video library",
+      },
+    ],
+  },
+};
+
+export default async function VideosPage() {
+  const videos = await listPublishedVideos().catch(() => []);
+
+  return (
+    <>
+      <section className="page-hero video-page-hero">
+        <p className="kicker ink">Video library</p>
+        <h1>Videos</h1>
+        <p>
+          Browse fence, gate, pavilion and installation videos.
+        </p>
+      </section>
+      <section className="page-section video-library-section">
+        <VideoLibrary videos={videos} />
+      </section>
+    </>
+  );
 }

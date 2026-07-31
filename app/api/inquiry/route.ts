@@ -5,6 +5,7 @@ export const runtime = "nodejs";
 const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = new Set(["pdf", "dwg", "dxf", "jpg", "jpeg", "png", "webp"]);
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TURNSTILE_ACTION = "turnstile-spin-v2";
 
 function value(data: FormData, name: string) {
   return String(data.get(name) || "").trim();
@@ -18,15 +19,26 @@ function escapeHtml(text: string) {
   return text.replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character] || character));
 }
 
-async function verifyTurnstile(token: string, ip: string | null) {
+async function verifyTurnstile(token: string, ip: string | null, expectedHostname: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
+  if (!secret || !token || token.length > 2048) return false;
   const body = new URLSearchParams({ secret, response: token });
   if (ip) body.set("remoteip", ip);
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body });
-  const result = await response.json() as { success?: boolean };
-  return result.success === true;
+  try {
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      signal: AbortSignal.timeout(10_000),
+      body,
+    });
+    if (!response.ok) return false;
+    const result = await response.json() as { success?: boolean; action?: string; hostname?: string };
+    return result.success === true
+      && result.action === TURNSTILE_ACTION
+      && (process.env.NODE_ENV !== "production" || result.hostname === expectedHostname);
+  } catch {
+    return false;
+  }
 }
 
 export async function POST(request: Request) {
@@ -57,12 +69,12 @@ export async function POST(request: Request) {
     message: safeText(value(data, "message")),
   };
 
-  if (!fields.name || !fields.company || !fields.email || !fields.country || !fields.product || !fields.message || value(data, "consent") !== "yes") return NextResponse.json({ message: "Please complete all required fields." }, { status: 400 });
+  if (!fields.name || !fields.company || !fields.email || !fields.country || !fields.product || !fields.message) return NextResponse.json({ message: "Please complete all required fields." }, { status: 400 });
   if (value(data, "inquiryContext") === "pergola-detail" && (!fields.installationDimensions || !fields.roofType || !fields.operation)) return NextResponse.json({ message: "Please complete the pergola configuration fields." }, { status: 400 });
   if (!EMAIL_PATTERN.test(fields.email)) return NextResponse.json({ message: "Please enter a valid business email." }, { status: 400 });
 
   const ip = request.headers.get("CF-Connecting-IP");
-  if (!await verifyTurnstile(value(data, "cf-turnstile-response"), ip)) return NextResponse.json({ message: "Security verification failed. Please try again." }, { status: 400 });
+  if (!await verifyTurnstile(value(data, "cf-turnstile-response"), ip, requestUrl.hostname)) return NextResponse.json({ message: "Security verification failed. Please try again." }, { status: 403 });
 
   const attachment = data.get("attachment");
   let emailAttachment: { filename: string; content: string } | undefined;

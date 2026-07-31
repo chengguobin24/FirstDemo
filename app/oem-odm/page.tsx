@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   description:
     "OEM and ODM support for aluminum fences, gates and pergolas, from drawing review and product development to branded production and delivery preparation.",
   alternates: { canonical: "/oem-odm" },
+  openGraph: {
+    title: "OEM & ODM Aluminum Systems | JUNSU",
+    description:
+      "OEM and ODM support for aluminum fences, gates and pergolas, from drawing review to production and delivery preparation.",
+    url: "/oem-odm",
+    images: [
+      {
+        url: "/images/oem-odm/junsu-gate-villa-soft-light-16x9.png",
+        alt: "JUNSU custom aluminum gate project scene for OEM and ODM service",
+      },
+    ],
+  },
 };
 
 const faqs = [
@@ -40,7 +52,7 @@ export default function OemPage() {
           </p>
           <div className={styles.actions}>
             <Link className="button light" href="/#quote">Start a project inquiry</Link>
-            <a className={styles.whatsapp} href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+            <a className={styles.whatsapp} href="https://wa.me/8613525568065" target="_blank" rel="noopener noreferrer">
               Contact on WhatsApp <span aria-hidden="true">↗</span>
             </a>
           </div>

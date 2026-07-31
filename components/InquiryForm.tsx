@@ -1,13 +1,16 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
-import { TurnstileWidget } from "@/components/TurnstileWidget";
+import { FormEvent, useCallback, useRef, useState } from "react";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/TurnstileWidget";
 
 type Status = { type: "idle" | "sending" | "success" | "error"; message: string };
 
 export function InquiryForm({ variant = "default", productDefault = "", pergolaProject = false }: { variant?: "default" | "original"; productDefault?: string; pergolaProject?: boolean }) {
   const startedAt = useRef(0);
+  const turnstile = useRef<TurnstileWidgetHandle>(null);
+  const [verified, setVerified] = useState(false);
   const [status, setStatus] = useState<Status>({ type: "idle", message: "" });
+  const handleVerifiedChange = useCallback((nextVerified: boolean) => setVerified(nextVerified), []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,6 +28,7 @@ export function InquiryForm({ variant = "default", productDefault = "", pergolaP
       form.reset();
       startedAt.current = 0;
     } catch (error) { setStatus({ type: "error", message: error instanceof Error ? error.message : "The request could not be sent." }); }
+    finally { turnstile.current?.reset(); }
   }
 
   return (
@@ -40,9 +44,8 @@ export function InquiryForm({ variant = "default", productDefault = "", pergolaP
       {pergolaProject && <><div className="field"><label htmlFor="installationDimensions">Installation dimensions *</label><input id="installationDimensions" name="installationDimensions" type="text" required placeholder="Length × width or available area" /></div><div className="field"><label htmlFor="roofType">Preferred roof type *</label><select id="roofType" name="roofType" required defaultValue=""><option value="" disabled>Select a roof type</option><option>Rotating louver roof</option><option>Retractable louver roof</option><option>Custom fixed roof request</option><option>Need a recommendation</option></select></div><div className="field"><label htmlFor="operation">Opening method *</label><select id="operation" name="operation" required defaultValue=""><option value="" disabled>Select an opening method</option><option>Manual operation</option><option>Electric operation</option><option>Need a recommendation</option></select></div></>}
       <div className="field full"><label htmlFor="message">{pergolaProject ? "Quantity, accessories and project details *" : "Dimensions, quantity and project details *"}</label><textarea id="message" name="message" rows={2} required placeholder={pergolaProject ? "Tell us the quantity, colour, accessories, mounting conditions and any other requirements." : "Tell us the application, dimensions, quantity, finish and destination."} /></div>
       <div className="field full"><label htmlFor="attachment">{pergolaProject ? "Attach a site photo, drawing or reference" : "Attach drawing or reference"}</label><input id="attachment" name="attachment" type="file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.webp" /><small>PDF, DWG, DXF, JPG, PNG or WebP · maximum 10 MB</small></div>
-      <label className="consent full"><input type="checkbox" name="consent" value="yes" required /><span>I agree that JUNSU may use this information to respond to my project inquiry. *</span></label>
-      <TurnstileWidget />
-      <button className="submit-button full" type="submit" disabled={status.type === "sending"}>{status.type === "sending" ? "Sending…" : "Send project request"}<span aria-hidden="true">↗</span></button>
+      <TurnstileWidget ref={turnstile} onVerifiedChange={handleVerifiedChange} />
+      <button className="submit-button full" type="submit" disabled={status.type === "sending" || !verified}>{status.type === "sending" ? "Sending…" : verified ? "Send project request" : "Completing security check…"}<span aria-hidden="true">↗</span></button>
       <p className={`form-status full ${status.type}`} role="status" aria-live="polite">{status.message}</p>
     </form>
   );

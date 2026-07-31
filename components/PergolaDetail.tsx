@@ -169,7 +169,10 @@ export function PergolaDetail({ selectedKey = "pergola-05" }: { selectedKey?: Pe
       <section className={styles.models} id="models">
         <div className={styles.sectionHeading}>
           <h2>Compare the<br /><em>louver families.</em></h2>
-          <p>Profile values are extracted from the supplied technical materials. Final sections and allowable spans must be confirmed against the approved project drawing before quotation or production.</p>
+          <div className={`${heroStyles.catalogActions} ${styles.catalogActions}`}>
+            <a href="/catalogs/junsu-pergola-catalog.pdf" target="_blank" rel="noopener noreferrer">Online preview <span aria-hidden="true">↗</span></a>
+            <a className={heroStyles.catalogDownload} href="/catalogs/junsu-pergola-catalog.pdf" download="JUNSU-Pergola-Catalog.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
         <div className={styles.modelTable} role="region" aria-label="Pergola model comparison" tabIndex={0}>
           <table>
@@ -180,7 +183,7 @@ export function PergolaDetail({ selectedKey = "pergola-05" }: { selectedKey?: Pe
         <div className={styles.modelContact}>
           <p>Pergolas are custom products. The dimensions shown are standard-size references only. Please contact our team to discuss your project requirements in detail.</p>
           <div className={styles.modelContactActions}>
-            <a className={`${styles.modelContactButton} ${styles.whatsAppButton}`} href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+            <a className={`${styles.modelContactButton} ${styles.whatsAppButton}`} href="https://wa.me/8613525568065" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
             <Link className={`${styles.modelContactButton} ${styles.inquiryButton}`} href="/#quote">Submit an inquiry <span aria-hidden="true">↓</span></Link>
           </div>
         </div>

@@ -108,10 +108,14 @@ export async function FenceDetail({ variant, searchParams }: FencePageProps & { 
       </section>
 
       <section className={gateStyles.stylesSection}>
-        <header className="fence-unified-showcase-heading site-reveal site-reveal-text">
+        <header className={`${gateStyles.catalogHeading} site-reveal site-reveal-text`}>
           <div className={gateStyles.catalogCopy}>
             <h2>Aluminum Fencing That Completes the Landscape</h2>
             <p>From open-slat garden boundaries and louvered semi-privacy panels to closed privacy fencing, our powder-coated aluminum fence systems define outdoor spaces while complementing planting, architecture and matching gates. Horizontal or vertical layouts and project-specific spacing make them suitable for villa gardens, residential boundaries, landscape divisions and commercial perimeters.</p>
+          </div>
+          <div className={gateStyles.catalogActions}>
+            <a href="/catalogs/junsu-aluminum-fence-catalog.pdf" target="_blank" rel="noopener noreferrer">Online preview <span aria-hidden="true">↗</span></a>
+            <a className={gateStyles.catalogDownload} href="/catalogs/junsu-aluminum-fence-catalog.pdf" download="JUNSU-Aluminum-Fence-Catalog.pdf">Download PDF <span aria-hidden="true">↓</span></a>
           </div>
         </header>
         <nav className="fence-type-nav" aria-label="Fence system types">
@@ -148,7 +152,7 @@ export async function FenceDetail({ variant, searchParams }: FencePageProps & { 
       </section>
 
       <section className={gateStyles.faqSection}>
-        <div className={`${gateStyles.faqHeading} site-reveal site-reveal-text`}><p className={gateStyles.eyebrow}>Before your inquiry</p><h2>{content.faqHeading}</h2><div className={gateStyles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">→</span></Link><a className={gateStyles.whatsappButton} href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">→</span></a></div></div>
+        <div className={`${gateStyles.faqHeading} site-reveal site-reveal-text`}><p className={gateStyles.eyebrow}>Before your inquiry</p><h2>{content.faqHeading}</h2><div className={gateStyles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">→</span></Link><a className={gateStyles.whatsappButton} href="https://wa.me/8613525568065" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">→</span></a></div></div>
         <div className={`${gateStyles.faqList} site-reveal site-reveal-text`}>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />

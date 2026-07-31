@@ -1,18 +1,20 @@
-"use client";
+import { YouTubePlayer } from "@/components/YouTubePlayer";
+import { videoCategoryLabel, type WebsiteVideo } from "@/lib/video-types";
 
-import Image from "next/image";
-import { useState } from "react";
-
-type VideoCardProps = { title: string; category: string; description: string; poster: string; src: string | null };
-
-export function VideoCard({ title, category, description, poster, src }: VideoCardProps) {
-  const [playing, setPlaying] = useState(false);
+export function VideoCard({
+  youtubeId,
+  title,
+  category,
+  description,
+}: Pick<WebsiteVideo, "youtubeId" | "title" | "category" | "description">) {
   return (
     <article className="video-card">
-      <div className="video-frame">
-        {playing && src ? <video controls autoPlay playsInline preload="metadata" poster={poster} aria-label={title}><source src={src} type="video/mp4" /></video> : <><Image src={poster} alt="" fill unoptimized sizes="(max-width: 800px) 100vw, 50vw" /><button type="button" disabled={!src} onClick={() => setPlaying(true)} aria-label={src ? `Play ${title}` : `${title} video pending`}><span aria-hidden="true">{src ? "▶" : "+"}</span>{src ? "Play video" : "Media pending"}</button></>}
+      <YouTubePlayer className="video-frame" videoId={youtubeId} title={title} />
+      <div className="video-copy">
+        <span>{videoCategoryLabel(category)}</span>
+        <h2>{title}</h2>
+        {description ? <p>{description}</p> : null}
       </div>
-      <div className="video-copy"><span>{category}</span><h2>{title}</h2><p>{description}</p></div>
     </article>
   );
 }

@@ -1,0 +1,891 @@
+.adminPage {
+  min-height: 100vh;
+  color: #1d211e;
+  background: #fff;
+}
+
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  min-height: 82px;
+  padding: 0 clamp(24px, 4vw, 64px);
+  color: #fff;
+  background: #1b1f1c;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.adminBrand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.adminBrand b {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #d5a170;
+  border: 1px solid rgba(255,255,255,.45);
+  font-family: Georgia, serif;
+}
+
+.adminBrand span {
+  display: grid;
+  color: rgba(255,255,255,.58);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.adminBrand strong {
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: .16em;
+}
+
+.adminUser {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  color: rgba(255,255,255,.64);
+  font-size: 11px;
+}
+
+.adminUser a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.adminUser form {
+  margin: 0;
+}
+
+.adminUser button {
+  padding: 0;
+  color: #fff;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+}
+
+.adminNav {
+  display: flex;
+  align-self: stretch;
+  gap: 26px;
+  align-items: center;
+}
+
+.adminNav a {
+  position: relative;
+  display: grid;
+  align-items: center;
+  align-self: stretch;
+  color: rgba(255,255,255,.58);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+
+.adminNav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: #d8a574;
+  content: "";
+  opacity: 0;
+  transform: scaleX(.5);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.adminNav a:hover,
+.adminNav .adminNavActive {
+  color: #fff;
+}
+
+.adminNav .adminNavActive::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.accessMode {
+  padding: 6px 8px;
+  color: #f2c79e;
+  border: 1px solid rgba(213,161,112,.5);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.adminContent {
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 52px) 0 80px;
+}
+
+.loginPage {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(25, 64, 130, .12), transparent 32vw),
+    radial-gradient(circle at bottom right, rgba(242, 106, 27, .1), transparent 30vw),
+    #fff;
+}
+
+.loginCard {
+  display: grid;
+  width: min(100%, 440px);
+  gap: 14px;
+  padding: clamp(28px, 5vw, 44px);
+  border: 1px solid rgba(29,33,30,.16);
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 24px 80px rgba(20,30,40,.12);
+}
+
+.loginEyebrow {
+  color: #a9703f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.loginCard h1 {
+  margin: 0;
+  color: #162f67;
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: .95;
+}
+
+.loginCard p {
+  margin: 0 0 8px;
+  color: #4d5350;
+  line-height: 1.6;
+}
+
+.loginCard label {
+  color: #1d211e;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.loginCard input {
+  min-height: 52px;
+  padding: 0 14px;
+  color: #1d211e;
+  border: 2px solid rgba(29,33,30,.28);
+  background: #fff;
+  font-size: 16px;
+}
+
+.loginCard input:focus {
+  border-color: #162f67;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(22,47,103,.12);
+}
+
+.loginCard button {
+  min-height: 52px;
+  color: #fff;
+  border: 0;
+  background: #162f67;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.loginError,
+.loginNotice {
+  padding: 12px 14px;
+  color: #7a2e0e;
+  border: 1px solid rgba(242,106,27,.28);
+  background: rgba(242,106,27,.08);
+  font-size: 13px;
+}
+
+.adminToolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.adminSearch {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  flex: 1;
+  max-width: 760px;
+  min-height: 48px;
+  border: 1px solid rgba(29,33,30,.22);
+  background: #fff;
+}
+
+.adminSearch input {
+  min-width: 0;
+  padding: 0 18px;
+  color: #1d211e;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 13px;
+}
+
+.adminSearch input::placeholder {
+  color: #7a7f7b;
+}
+
+.adminSearch:focus-within {
+  border-color: #a9703f;
+  box-shadow: 0 0 0 2px rgba(169,112,63,.12);
+}
+
+.adminSearch button,
+.adminSearch a {
+  display: grid;
+  min-width: 72px;
+  padding: 0 15px;
+  place-items: center;
+  color: #1d211e;
+  border: 0;
+  border-left: 1px solid rgba(29,33,30,.14);
+  background: transparent;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.adminSearch button:hover,
+.adminSearch a:hover {
+  background: #fff;
+}
+
+.adminSearch button:focus-visible,
+.adminSearch a:focus-visible {
+  outline: 2px solid #a9703f;
+  outline-offset: -3px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.primaryButton,
+.secondaryButton,
+.templateTools button,
+.addBlock button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid #1b1f1c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 200ms ease, background 200ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  color: #fff;
+  background: #1b1f1c;
+}
+
+.primaryButton:hover {
+  color: #1b1f1c;
+  background: #d8a574;
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.secondaryButton {
+  color: #1b1f1c;
+  background: transparent;
+}
+
+.editorTop .secondaryButton {
+  color: #fff;
+  border-color: rgba(255,255,255,.42);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+.postTable {
+  overflow: hidden;
+  border: 1px solid rgba(29,33,30,.16);
+  background: #fff;
+}
+
+.postRow {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.7fr) .55fr .5fr .45fr auto;
+  gap: 24px;
+  align-items: center;
+  min-height: 86px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(29,33,30,.12);
+}
+
+.postRow:last-child {
+  border-bottom: 0;
+}
+
+.postRow > div {
+  min-width: 0;
+}
+
+.postRow strong {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.postRow small,
+.postRow span,
+.postRow time {
+  color: #656a66;
+  font-size: 11px;
+}
+
+.status {
+  justify-self: start;
+  padding: 6px 9px;
+  color: #4d331d!important;
+  background: #ead8c6;
+  font-size: 9px!important;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.statusPublished {
+  color: #234c34!important;
+  background: #dbe9df;
+}
+
+.postRow a {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.editor {
+  min-height: 100vh;
+  background: #f7f8fa;
+}
+
+.editorTop {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  min-height: 76px;
+  padding: 12px clamp(20px, 3vw, 48px);
+  color: #fff;
+  background: #1b1f1c;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+
+.editorTop > div:first-child {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.editorTop a {
+  color: inherit;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.editorTop > div:first-child span {
+  padding-left: 18px;
+  color: rgba(255,255,255,.7);
+  border-left: 1px solid rgba(255,255,255,.18);
+}
+
+.editorTop > div:first-child strong {
+  color: #d8a574;
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.editorActions {
+  display: flex;
+  gap: 9px;
+}
+
+.editorTop .primaryButton {
+  color: #1b1f1c;
+  background: #d8a574;
+  border-color: #d8a574;
+}
+
+.message {
+  position: sticky;
+  z-index: 45;
+  top: 76px;
+  padding: 12px 48px;
+  color: #2c432f;
+  border-bottom: 1px solid #bad1be;
+  background: #e4f0e6;
+  font-size: 12px;
+}
+
+.messageError {
+  color: #6f251f;
+  border-color: #dfb8b2;
+  background: #f7e4e1;
+}
+
+.editorLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 28px;
+  width: min(1500px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 34px 0 80px;
+}
+
+.videoEditorLayout {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  width: min(1280px, calc(100% - 40px));
+}
+
+.videoEditorLayout .editorSection > .field {
+  margin-top: 20px;
+}
+
+.editorMain {
+  min-width: 0;
+}
+
+.editorSection,
+.editorSidebar section {
+  margin-bottom: 28px;
+  padding: clamp(24px, 3vw, 42px);
+  border: 1px solid rgba(29,33,30,.14);
+  background: #fff;
+}
+
+.editorSection > .field + .field {
+  margin-top: 20px;
+}
+
+.sectionLabel {
+  margin-bottom: 20px;
+  color: #9b6738;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field > span {
+  color: #454a46;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field textarea,
+.field select,
+.templateTools select,
+.addBlock select {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 13px;
+  color: #1d211e;
+  border: 1px solid rgba(29,33,30,.2);
+  border-radius: 0;
+  outline: 0;
+  background: #fff;
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: #a9703f;
+  box-shadow: 0 0 0 2px rgba(169,112,63,.12);
+}
+
+.twoFields,
+.blockFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.blockFields > .field:has(textarea),
+.blockFields > .field:only-child {
+  grid-column: 1 / -1;
+}
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 25px;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.templateTools {
+  display: flex;
+  gap: 8px;
+}
+
+.templateTools select,
+.addBlock select {
+  min-width: 180px;
+}
+
+.templateTools button,
+.addBlock button {
+  min-height: 46px;
+  color: #1b1f1c;
+  background: #fff;
+}
+
+.blocks {
+  display: grid;
+  gap: 14px;
+}
+
+.blockCard {
+  border: 1px solid rgba(29,33,30,.17);
+  background: #fff;
+}
+
+.blockCard > header {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 54px;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(29,33,30,.12);
+}
+
+.blockCard > header > span {
+  color: #a9703f;
+  font-size: 9px;
+}
+
+.blockCard > header > strong {
+  font-size: 11px;
+}
+
+.blockCard > header > div {
+  display: flex;
+  gap: 5px;
+}
+
+.blockCard > header button {
+  padding: 6px 8px;
+  color: #4f554f;
+  border: 1px solid rgba(29,33,30,.14);
+  background: transparent;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.blockCard > .field,
+.blockCard > .blockFields {
+  margin: 0;
+  padding: 20px;
+}
+
+.addBlock {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px dashed rgba(29,33,30,.28);
+}
+
+.editorSidebar {
+  min-width: 0;
+}
+
+.editorSidebar section {
+  margin-bottom: 16px;
+  padding: 24px;
+}
+
+.editorSidebar .field + .field {
+  margin-top: 17px;
+}
+
+.help {
+  margin: 14px 0 0;
+  color: #6a6f6b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.inlineError {
+  margin: 8px 0 0;
+  color: #8b2d24;
+  font-size: 11px;
+}
+
+.videoPreviewEmpty {
+  display: grid;
+  min-height: 210px;
+  padding: 30px;
+  place-items: center;
+  color: #6a6f6b;
+  border: 1px dashed rgba(29,33,30,.24);
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.adminVideoPreview {
+  width: 100%;
+}
+
+.videoAdminRow {
+  grid-template-columns: minmax(260px, 1.5fr) .7fr .45fr .45fr auto;
+}
+
+.archiveButton {
+  width: 100%;
+  min-height: 44px;
+  color: #8b2d24;
+  border: 1px solid rgba(139,45,36,.45);
+  background: transparent;
+  cursor: pointer;
+}
+
+.previewPage {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.previewBar {
+  position: sticky;
+  z-index: 60;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  padding: 14px 24px;
+  color: #fff;
+  background: #1b1f1c;
+}
+
+.previewBar span {
+  color: #d8a574;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.previewBar a {
+  color: #fff;
+  font-size: 10px;
+}
+
+.previewHero {
+  padding: clamp(60px, 7vw, 105px) var(--pad);
+  background: var(--paper);
+}
+
+.previewHero h1 {
+  max-width: 1100px;
+}
+
+.previewHero p {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.previewBody {
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 80px 0 120px;
+}
+
+@media (max-width: 1050px) {
+  .editorLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .editorSidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .editorSidebar section {
+    margin: 0;
+  }
+
+  .postRow {
+    grid-template-columns: minmax(220px, 1.5fr) .6fr .5fr auto;
+  }
+
+  .postRow time {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .adminHeader,
+  .editorTop,
+  .sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .adminHeader {
+    padding-block: 18px;
+  }
+
+  .adminNav {
+    order: 3;
+    width: 100%;
+    min-height: 42px;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .adminNav a {
+    align-self: stretch;
+  }
+
+  .adminUser {
+    flex-wrap: wrap;
+  }
+
+  .adminToolbar {
+    flex-direction: column;
+  }
+
+  .adminSearch {
+    width: 100%;
+    max-width: none;
+  }
+
+  .adminToolbar > .primaryButton {
+    width: 100%;
+  }
+
+  .adminSearch button,
+  .adminSearch a {
+    min-width: 62px;
+    padding-inline: 10px;
+  }
+
+  .editorTop {
+    position: static;
+  }
+
+  .editorActions,
+  .templateTools,
+  .addBlock {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .editorActions > *,
+  .templateTools > *,
+  .addBlock > * {
+    flex: 1;
+  }
+
+  .twoFields,
+  .blockFields,
+  .editorSidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .postRow {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+
+  .postRow > span:not(.status),
+  .postRow time {
+    display: none;
+  }
+
+  .blockCard > header {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .blockCard > header > div {
+    grid-column: 1 / -1;
+  }
+}

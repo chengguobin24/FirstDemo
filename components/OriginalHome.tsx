@@ -125,7 +125,7 @@ export function OriginalHome() {
       <div>
         <section className={`${cx("factory-hero")} site-home-hero`} id="top">
           <div className={cx("factory-media")}>
-            <Image src="/images/junsu-hero.jpg" alt="Coordinated dark aluminum fence, sliding gate and louvered pergola at a modern residence" fill priority unoptimized sizes="100vw" />
+            <Image src="/images/junsu-hero-edited-gate-pergola.png" alt="Coordinated dark aluminum fence, decorative driveway gate and louvered pergola at a modern residence" fill priority unoptimized sizes="100vw" />
           </div>
           <div className={cx("hero-grid")} aria-hidden="true" />
           <div className={cx("factory-copy")}><p className={cx("kicker")}>Fence · Gate · Pergola systems</p><h1>One exterior language,<br /><em>engineered around the project.</em></h1><p>JUNSU develops project-specific aluminum fence, gate and pergola systems for distributors, contractors and architectural projects.</p><div className={cx("hero-actions")}><Link className={cx("button")} href="/products">Explore our systems</Link><Link className={cx("line-link")} href="/#quote">Discuss your project <span>↗</span></Link></div></div>
@@ -185,7 +185,17 @@ export function OriginalHome() {
         </section>
 
         <section className={cx("about-screen")}>
-          <div><p className={cx("kicker")}>About us</p><h2>JUNSU</h2><span className={cx("about-word")}>ABOUT US</span></div>
+          <div className={cx("about-brand")}>
+            <Image
+              className={cx("about-logo")}
+              src="/brand/junsu-technology-source.jpg"
+              alt="JUNSU Technology"
+              width={700}
+              height={700}
+              sizes="(max-width: 700px) 90vw, 42vw"
+            />
+            <p className={cx("about-tagline")}>One-Stop Garden Aluminum Outdoor Solution</p>
+          </div>
           <div className={cx("about-copy")}><h3>A focused partner for aluminum outdoor systems.</h3><p>Henan Junsu Technology Co., Ltd. develops aluminum fence, gate and pergola solutions around project requirements. Our role is to connect product configuration, manufacturing preparation and export delivery through one clear working process.</p><p>We support distributors, contractors and project teams that need coordinated products, drawing review, finish selection and practical delivery preparation.</p><div className={cx("audiences")}><span>Distributors</span><span>Contractors</span><span>Architectural projects</span></div><Link className={cx("button", "light")} href="/about">Read our story</Link></div>
         </section>
 

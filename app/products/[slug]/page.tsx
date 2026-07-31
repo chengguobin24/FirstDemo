@@ -22,9 +22,35 @@ export async function generateMetadata({ params, searchParams }: ProductPageProp
       title: selectedContent?.seoTitle ?? defaultPergolaSeo.title,
       description: selectedContent?.seoDescription ?? defaultPergolaSeo.description,
       alternates: { canonical: "/products/aluminum-pergolas" },
+      openGraph: {
+        title: selectedContent?.seoTitle ?? defaultPergolaSeo.title,
+        description: selectedContent?.seoDescription ?? defaultPergolaSeo.description,
+        url: "/products/aluminum-pergolas",
+        images: [
+          {
+            url: "/images/product-gallery/pergolas/pergola-05.jpg",
+            alt: "JUNSU enclosed aluminum louvered pergola system with lighting and glass screens",
+          },
+        ],
+      },
     };
   }
-  return { title: product.name, description: product.summary, alternates: { canonical: `/products/${product.slug}` } };
+  return {
+    title: product.name,
+    description: product.summary,
+    alternates: { canonical: `/products/${product.slug}` },
+    openGraph: {
+      title: `${product.name} | JUNSU`,
+      description: product.summary,
+      url: `/products/${product.slug}`,
+      images: [
+        {
+          url: "/images/junsu-hero-edited-gate-pergola.png",
+          alt: `${product.name} by JUNSU`,
+        },
+      ],
+    },
+  };
 }
 
 export default async function ProductPage({ params, searchParams }: ProductPageProps) {

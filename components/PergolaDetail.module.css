@@ -2,7 +2,7 @@
   --deep: #171a18;
   --soft: #e8e3d8;
   --accent: #ad7443;
-  background: #f4f1e9;
+  background: #fff;
 }
 
 .roofSection,
@@ -49,7 +49,7 @@
   padding: clamp(56px, 5.5vw, 86px) var(--pad);
   color: var(--deep);
   border-bottom: 1px solid var(--line);
-  background: #f7f5ef;
+  background: #fff;
 }
 
 .sectionHeading {
@@ -69,6 +69,12 @@
   margin: 0 0 10px;
   color: var(--muted);
   font-size: 15px;
+}
+
+.catalogActions {
+  align-self: end;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .roofSection .sectionHeading > p {
@@ -120,7 +126,7 @@
   grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
   color: var(--deep);
   border-bottom: 1px solid var(--line);
-  background: #faf9f5;
+  background: #fff;
 }
 
 .optionBlock {
@@ -134,7 +140,7 @@
   align-items: center;
   padding: clamp(24px, 3vw, 52px);
   border-right: 1px solid var(--line);
-  background: #f1eee6;
+  background: #f7f8fa;
 }
 
 .colourPreview {
@@ -211,7 +217,7 @@
 }
 
 .colourButton[data-finish="grey"] i { background: #5b5d5c; }
-.colourButton[data-finish="white"] i { background: #f3f1eb; }
+.colourButton[data-finish="white"] i { background: #fff; }
 .colourButton[data-finish="coffee"] i { background: #604333; }
 .colourButton[data-finish="black"] i { background: #181918; }
 
@@ -244,7 +250,7 @@
   min-height: 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #f5f1e9;
+  background: #fff;
 }
 
 .optionVisual img {
@@ -371,7 +377,7 @@
 
 .modelTable thead th {
   color: var(--muted);
-  background: #f7f5f0;
+  background: #fff;
   font-size: 9px;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -422,7 +428,7 @@
   overflow: visible;
   color: var(--deep);
   border: 1px solid #ddd8ce;
-  background: #f8f6f1;
+  background: #fff;
   cursor: zoom-in;
 }
 

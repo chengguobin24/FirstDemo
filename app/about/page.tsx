@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   description:
     "Explore JUNSU's aluminum manufacturing facility and learn how its technical, sales and production teams support custom fence, gate and pergola projects.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About JUNSU | Aluminum Fence, Gate & Pergola Manufacturer",
+    description:
+      "Explore JUNSU's aluminum manufacturing facility and project support for custom aluminum fences, gates and pergolas.",
+    url: "/about",
+    images: [
+      {
+        url: "/images/about/junsu-factory-exterior-hero-v2.png",
+        alt: "JUNSU aluminum fence, gate and pergola manufacturing facility exterior",
+      },
+    ],
+  },
 };
 
 const factoryImages = [

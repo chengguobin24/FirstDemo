@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   title: "Aluminum Fences, Gates & Pergolas",
   description: "Explore JUNSU aluminum fence, gate and pergola systems for residential, commercial and project applications.",
   alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Aluminum Fences, Gates & Pergolas | JUNSU",
+    description: "Explore JUNSU aluminum fence, gate and pergola systems for residential, commercial and project applications.",
+    url: "/products",
+    images: [
+      {
+        url: "/images/junsu-hero-edited-gate-pergola.png",
+        alt: "JUNSU coordinated aluminum fence, gate and pergola systems",
+      },
+    ],
+  },
 };
 
 const collections = [

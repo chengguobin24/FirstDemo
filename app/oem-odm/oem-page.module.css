@@ -86,7 +86,7 @@
   justify-content: flex-end;
   overflow: hidden;
   color: #6f6a61;
-  background: linear-gradient(135deg, #e5e1d8 0%, #f5f2ec 55%, #ddd8cd 100%);
+  background: #fff;
 }
 
 .cardPlaceholder::after {
@@ -242,7 +242,7 @@
   width: 100%;
   aspect-ratio: 1729 / 910;
   overflow: hidden;
-  background: #f4f1e9;
+  background: #fff;
   border: 1px solid var(--line);
 }
 
@@ -371,18 +371,18 @@
 
 /* 2026-07-21 visual simplification: one light palette with line-led grouping. */
 .page {
-  --oem-soft: #f3f1eb;
-  background: #fafaf8;
+  --oem-soft: #fff;
+  background: #fff;
 }
 
 .introduction,
 .solutions,
 .faqSection {
-  background: #fafaf8;
+  background: #fff;
 }
 
 .process {
-  background: #f3f1eb;
+  background: #fff;
 }
 
 .commercialNotes {
@@ -406,7 +406,7 @@
 }
 
 .cardPlaceholder {
-  background: #eeece6;
+  background: #f7f8fa;
 }
 
 .cardPlaceholder::after {
@@ -455,7 +455,7 @@
 /* 6063-T5 material feature: editorial copy, isolated raw profiles and three benefits. */
 .materialSection {
   padding: clamp(60px, 6vw, 92px) var(--pad);
-  background: #f3f1eb;
+  background: #fff;
 }
 
 .materialOverview {
@@ -520,7 +520,7 @@
   min-width: 0;
   min-height: 310px;
   padding: clamp(30px, 3vw, 48px);
-  background: #fafaf8;
+  background: #fff;
 }
 
 .materialCards span {

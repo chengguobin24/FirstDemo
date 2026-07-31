@@ -160,7 +160,7 @@ export default async function AluminumSlidingGatesPage({ searchParams }: Sliding
       </section>
 
       <section className={styles.faqSection}>
-        <div className={`${styles.faqHeading} site-reveal site-reveal-text`}><p className={styles.eyebrow}>Plan the sliding path</p><h2>Sliding gate questions.</h2><div className={styles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">↗</span></Link><a className={styles.whatsappButton} href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></div>
+        <div className={`${styles.faqHeading} site-reveal site-reveal-text`}><p className={styles.eyebrow}>Plan the sliding path</p><h2>Sliding gate questions.</h2><div className={styles.faqActions}><Link className="button dark" href="/#quote">Send an inquiry <span aria-hidden="true">↗</span></Link><a className={styles.whatsappButton} href="https://wa.me/8613525568065" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></div>
         <div className={`${styles.faqList} site-reveal site-reveal-text`}>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
